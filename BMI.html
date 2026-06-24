@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#4facfe,#00f2fe);
+        }
+
+        .container{
+            background:white;
+            padding:35px;
+            width:400px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:2px solid #ddd;
+            border-radius:10px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            background:#00b894;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+            margin-top:10px;
+        }
+
+        button:hover{
+            background:#009874;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        #category{
+            margin-top:10px;
+            font-size:24px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>BMI Calculator</h1>
+
+    <input type="number" id="weight" placeholder="Enter Weight (kg)">
+
+    <input type="number" id="height" placeholder="Enter Height (m)">
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div id="result"></div>
+    <div id="category"></div>
+
+</div>
+
+<script>
+
+function calculateBMI(){
+
+    let weight =
+    parseFloat(document.getElementById("weight").value);
+
+    let height =
+    parseFloat(document.getElementById("height").value);
+
+    let bmi = weight / (height * height);
+
+    document.getElementById("result").innerHTML =
+    "BMI = " + bmi.toFixed(2);
+
+    let category =
+    document.getElementById("category");
+
+    if(bmi < 18.5){
+        category.innerHTML = "🔵 Underweight";
+        category.style.color = "blue";
+    }
+
+    else if(bmi < 25){
+        category.innerHTML = "🟢 Normal Weight";
+        category.style.color = "green";
+    }
+
+    else{
+        category.innerHTML = "🔴 Overweight";
+        category.style.color = "red";
+    }
+}
+
+</script>
+
+</body>
+</html>
